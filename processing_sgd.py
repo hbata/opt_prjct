@@ -150,7 +150,8 @@ def plot_history(history):
     plt.title('Loss')
     plt.xlabel('Epochs')
     plt.ylabel('Loss')
-    plt.legend(loc='best')
+    plt.grid()
+    # plt.legend(loc='best')
 
     ## Accuracy
     plt.figure(2)
@@ -164,7 +165,7 @@ def plot_history(history):
     plt.title('Accuracy')
     plt.xlabel('Epochs')
     plt.ylabel('Accuracy')
-    plt.legend(loc='best')
+    # plt.legend(loc='best')
     plt.show()
 
 
@@ -201,7 +202,6 @@ c0 = np.zeros((m, n_a))
 history = model.fit([X, a0, c0], list(Y), epochs=100)
 # plot training:
 print(history.history.keys())
-plot_history(history)
 #  "Accuracy"
 # plt.figure('training accuracy')
 # plt.plot(history.history['dense_1_acc_30'])
@@ -243,3 +243,4 @@ print("list(indices[12:18]) =", list(indices[12:18]))
 # and not just the quality of the RNN.
 # generate music and record it into the out_stream.
 out_stream = generate_music(inference_model)
+plot_history(history)

@@ -150,12 +150,12 @@ def plot_history(history):
     plt.title('Loss')
     plt.xlabel('Epochs')
     plt.ylabel('Loss')
-    plt.legend(loc='best')
-
+    # plt.legend(loc='upper right')
+    plt.grid()
     ## Accuracy
     plt.figure(2)
     for l in acc_list:
-        plt.plot(epochs, history.history[l], 'b',
+        plt.plot(epochs, history.history[l], 'r',
                  label='Training accuracy (' + str(format(history.history[l][-1], '.5f')) + ')')
     for l in val_acc_list:
         plt.plot(epochs, history.history[l], 'g',
@@ -164,7 +164,8 @@ def plot_history(history):
     plt.title('Accuracy')
     plt.xlabel('Epochs')
     plt.ylabel('Accuracy')
-    plt.legend(loc='best')
+    # plt.legend(loc='best')
+    plt.grid()
     plt.show()
 
 
@@ -198,7 +199,7 @@ c0 = np.zeros((m, n_a))
 # list(Y) is a list with 30 items, where each of the list items is of shape (60,78).
 # Train for 100 epochs.(epoch: 1 pass through the training set)
 history = model.fit([X, a0, c0], list(Y), epochs=100)
-plot_history(history)
+
 # plot training:
 print(history.history.keys())
 #  "Accuracy"
@@ -241,3 +242,4 @@ print("list(indices[12:18]) =", list(indices[12:18]))
 # and not just the quality of the RNN.
 # generate music and record it into the out_stream.
 out_stream = generate_music(inference_model)
+plot_history(history)
